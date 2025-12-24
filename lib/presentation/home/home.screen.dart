@@ -1,9 +1,9 @@
 import 'package:boozin_fitness/gen/assets.gen.dart';
 import 'package:boozin_fitness/infrastructure/theme/theme_utils.dart';
+import 'package:boozin_fitness/presentation/home/widgets/error_banner.dart';
 import 'package:boozin_fitness/presentation/home/widgets/metric_card.dart'
     show MetricCard;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 
@@ -14,61 +14,91 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final ext = context.ext;
+    final cs = Theme.of(context).colorScheme;
+    final tt = Theme.of(context).textTheme;
     final brightness = Theme.of(context).brightness;
-    final overlay = brightness == Brightness.dark
-        ? SystemUiOverlayStyle.light
-        : SystemUiOverlayStyle.dark;
 
-    final bg = context.ext.homeBg;
+    final kCalPath = brightness == Brightness.dark
+        ? Assets.icons.lightKcal.path
+        : Assets.icons.darkKcal.path;
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: overlay,
-      child: Scaffold(
-        backgroundColor: bg,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
+    final footStepPath = brightness == Brightness.dark
+        ? Assets.icons.lightFootstep.path
+        : Assets.icons.darkFootstep.path;
+
+    return Scaffold(
+      backgroundColor: ext.homeBg,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Obx(() {
+            final isLoading = controller.isLoading.value;
+            final err = controller.error.value;
+
+            return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 6),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 250),
+                  child: isLoading
+                      ? const Padding(
+                          padding: EdgeInsets.only(bottom: 10),
+                          child: LinearProgressIndicator(),
+                        )
+                      : const SizedBox(height: 10),
+                ),
+
                 Text(
                   'Hi!',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                  style: tt.headlineMedium?.copyWith(
+                    fontSize: 32,
                     fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.onSurface,
-                    height: 44 / 32,
+                    color: cs.onSurface,
                   ),
                 ),
-                const SizedBox(height: 40),
+
+                if (err != null) ...[
+                  const SizedBox(height: 12),
+                  ErrorBanner(
+                    message: err,
+                    onRetry: controller.refreshHealth,
+                    onClose: controller.clearError,
+                  ),
+                ],
+
+                const SizedBox(height: 34),
+
                 MetricCard(
                   label: 'Steps:',
-                  valueText: '13,112',
-                  progress: 13112 / 15000,
+                  valueText: controller.steps.value.toString(),
+                  progress: controller.stepsProgress,
                   leftFooterText: '0',
-                  rightFooterText: 'Goal: 15,000',
-                  trailingIcon: Image.asset(
-                    Assets.icons.footstep.path,
-                    fit: BoxFit.contain,
-                  ),
+                  rightFooterText: 'Goal: ${controller.stepsGoal}',
+                  trailingIcon: Image.asset(footStepPath, fit: BoxFit.contain),
                 ),
-
                 const SizedBox(height: 32),
-
                 MetricCard(
                   label: 'Calories Burned:',
-                  valueText: '500',
-                  progress: 500 / 1000,
+                  valueText: controller.kcal.value.toStringAsFixed(0),
+                  progress: controller.kcalProgress,
                   leftFooterText: '0',
-                  rightFooterText: 'Goal: 1000',
-                  trailingIcon: Image.asset(
-                    Assets.icons.kcal.path,
-                    fit: BoxFit.contain,
+                  rightFooterText: 'Goal: ${controller.kcalGoal}',
+                  trailingIcon: Image.asset(kCalPath, fit: BoxFit.contain),
+                ),
+                const Spacer(),
+                Align(
+                  alignment: Alignment.center,
+                  child: TextButton(
+                    onPressed: controller.refreshHealth,
+                    child: const Text('Refresh'),
                   ),
                 ),
+                const SizedBox(height: 12),
               ],
-            ),
-          ),
+            );
+          }),
         ),
       ),
     );

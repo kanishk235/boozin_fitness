@@ -12,15 +12,25 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/footstep.png
-  AssetGenImage get footstep =>
-      const AssetGenImage('assets/icons/footstep.png');
+  /// File path: assets/icons/darkFootstep.png
+  AssetGenImage get darkFootstep =>
+      const AssetGenImage('assets/icons/darkFootstep.png');
 
-  /// File path: assets/icons/kcal.png
-  AssetGenImage get kcal => const AssetGenImage('assets/icons/kcal.png');
+  /// File path: assets/icons/darkKcal.png
+  AssetGenImage get darkKcal =>
+      const AssetGenImage('assets/icons/darkKcal.png');
+
+  /// File path: assets/icons/lightFootstep.png
+  AssetGenImage get lightFootstep =>
+      const AssetGenImage('assets/icons/lightFootstep.png');
+
+  /// File path: assets/icons/lightKcal.png
+  AssetGenImage get lightKcal =>
+      const AssetGenImage('assets/icons/lightKcal.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [footstep, kcal];
+  List<AssetGenImage> get values =>
+      [darkFootstep, darkKcal, lightFootstep, lightKcal];
 }
 
 class $AssetsLogoGen {
