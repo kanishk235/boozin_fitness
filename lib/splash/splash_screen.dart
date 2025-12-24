@@ -1,4 +1,4 @@
-import 'package:boozin_fitness/config/theme/theme_utils.dart';
+import 'package:boozin_fitness/infrastructure/theme/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
