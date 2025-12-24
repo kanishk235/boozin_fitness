@@ -1,4 +1,5 @@
 import 'package:boozin_fitness/config/theme/app_theme.dart';
+import 'package:boozin_fitness/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,11 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
-      home: Container(),
+      home: SplashScreen(
+        onFinished: () {
+          //TODO(Kanishk): will add navigation later..
+        },
+      ),
     );
   }
 }
