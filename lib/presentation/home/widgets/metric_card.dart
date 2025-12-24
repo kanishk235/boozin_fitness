@@ -10,8 +10,10 @@ class MetricCard extends StatelessWidget {
     required this.leftFooterText,
     required this.rightFooterText,
     required this.trailingIcon,
+
     this.height = 122,
     this.borderRadius = 24,
+    this.iconSize = 52,
   });
 
   final String label;
@@ -20,9 +22,9 @@ class MetricCard extends StatelessWidget {
   final String leftFooterText;
   final String rightFooterText;
   final Widget trailingIcon;
-
   final double height;
   final double borderRadius;
+  final double iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -122,18 +124,12 @@ class MetricCard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          Align(
-            alignment: Alignment.center,
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
             child: SizedBox(
-              width: 52,
-              height: 52,
-              child: FittedBox(
-                fit: BoxFit.contain,
-                child: IconTheme(
-                  data: IconThemeData(color: onSurface),
-                  child: trailingIcon,
-                ),
-              ),
+              width: iconSize,
+              height: iconSize,
+              child: trailingIcon,
             ),
           ),
         ],

@@ -14,6 +14,9 @@ dependencies:
   flutter_gen: ^5.12.0
   cupertino_icons: ^1.0.8
   get: ^4.7.3
+  health: ^13.2.1
+  permission_handler: ^11.3.1
+
 
 dev_dependencies:
   build_runner:
@@ -36,8 +39,10 @@ flutter:
     - assets/logo/darkBoozinLogo.png
     - assets/logo/lightBoozinLogo.png
     - assets/logo/pinLogo.png
-    - assets/icons/footstep.png
-    - assets/icons/kcal.png
+    - assets/icons/darkFootstep.png
+    - assets/icons/darkKcal.png
+    - assets/icons/lightFootstep.png
+    - assets/icons/lightKcal.png
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
@@ -58,3 +63,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
