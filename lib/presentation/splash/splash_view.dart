@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/splash_controller.dart';
+import 'controllers/splash_controller.dart';
 import 'package:flutter/services.dart';
 
-import '../../../infrastructure/theme/theme_utils.dart';
-import '../../../gen/assets.gen.dart';
+import '../../infrastructure/theme/theme_utils.dart';
+import '../../gen/assets.gen.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

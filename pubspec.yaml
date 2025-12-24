@@ -36,6 +36,8 @@ flutter:
     - assets/logo/darkBoozinLogo.png
     - assets/logo/lightBoozinLogo.png
     - assets/logo/pinLogo.png
+    - assets/icons/footstep.png
+    - assets/icons/kcal.png
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
