@@ -1,3 +1,5 @@
+import 'package:boozin_fitness/presentation/splash/bindings/splash_binding.dart';
+import 'package:boozin_fitness/presentation/splash/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -23,9 +25,13 @@ class EnvironmentsBadge extends StatelessWidget {
         : SizedBox(child: child);
   }
 }
-
 class Nav {
   static List<GetPage> routes = [
+    GetPage(
+      name: Routes.SPLASH,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
+    ),
     GetPage(
       name: Routes.HOME,
       page: () => const HomeScreen(),
