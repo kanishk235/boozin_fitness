@@ -35,12 +35,13 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
     return ExtendedColors(
       homeBg: Color.lerp(homeBg, other.homeBg, t) ?? homeBg,
       cardBg: Color.lerp(cardBg, other.cardBg, t) ?? cardBg,
-      progressTrack: Color.lerp(progressTrack, other.progressTrack, t) ?? progressTrack,
-      progressFill: Color.lerp(progressFill, other.progressFill, t) ?? progressFill,
+      progressTrack:
+      Color.lerp(progressTrack, other.progressTrack, t) ?? progressTrack,
+      progressFill:
+      Color.lerp(progressFill, other.progressFill, t) ?? progressFill,
     );
   }
 }
-
 
 extension ExtendedColorsX on BuildContext {
   ExtendedColors get ext =>
