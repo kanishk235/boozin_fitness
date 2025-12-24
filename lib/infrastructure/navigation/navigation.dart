@@ -1,5 +1,5 @@
 import 'package:boozin_fitness/presentation/splash/bindings/splash_binding.dart';
-import 'package:boozin_fitness/presentation/splash/views/splash_view.dart';
+import 'package:boozin_fitness/presentation/splash/splash_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
